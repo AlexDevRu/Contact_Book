@@ -27,13 +27,16 @@ class ContactDetailsActivity : AppCompatActivity(), View.OnClickListener, Dialog
 
     private val viewModel by viewModels<ContactDetailsViewModel>()
 
+    private lateinit var uri: Uri
+
     private val cameraLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ) {
         if (it.resultCode == RESULT_OK) {
             Glide.with(binding.ivPhoto)
-                .load(SharedPrefs.uri)
+                .load(uri)
                 .into(binding.ivPhoto)
+            viewModel.saveImage(uri)
         }
     }
 
@@ -45,6 +48,7 @@ class ContactDetailsActivity : AppCompatActivity(), View.OnClickListener, Dialog
             Glide.with(binding.ivPhoto)
                 .load(uri)
                 .into(binding.ivPhoto)
+            viewModel.saveImage(uri)
         }
     }
 
@@ -99,8 +103,7 @@ class ContactDetailsActivity : AppCompatActivity(), View.OnClickListener, Dialog
         val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.ENGLISH).format(System.currentTimeMillis())
         val storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES)
         val file = File.createTempFile("JPEG_${timeStamp}_",".jpg", storageDir)
-        val uri = FileProvider.getUriForFile(this, "com.example.learning_android_contact_book_kulakov.fileprovider", file)
-        SharedPrefs.uri = uri.toString()
+        uri = FileProvider.getUriForFile(this, "com.example.learning_android_contact_book_kulakov.fileprovider", file)
         intent.putExtra(MediaStore.EXTRA_OUTPUT, uri)
         cameraLauncher.launch(intent)
     }

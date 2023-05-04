@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.learning_android_contact_book_kulakov.Contact
 import com.example.learning_android_contact_book_kulakov.databinding.ActivityMainBinding
 import com.example.learning_android_contact_book_kulakov.ui.adapters.ContactAdapter
@@ -26,6 +28,9 @@ class MainActivity : AppCompatActivity(), ContactAdapter.Listener, View.OnClickL
 
         binding.rvContacts.adapter = contactAdapter
         binding.btnRegister.setOnClickListener(this)
+
+        val dividerItemDecoration = DividerItemDecoration(this, LinearLayoutManager.VERTICAL)
+        binding.rvContacts.addItemDecoration(dividerItemDecoration)
 
         observe()
     }

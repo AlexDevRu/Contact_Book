@@ -6,7 +6,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.learning_android_contact_book_kulakov.Contact
+import com.example.learning_android_contact_book_kulakov.R
 import com.example.learning_android_contact_book_kulakov.databinding.ListItemContactBinding
 
 class ContactAdapter(
@@ -51,6 +53,10 @@ class ContactAdapter(
         fun bind(contact: Contact) {
             this.contact = contact
             binding.tvFullName.text = contact.getFullName()
+            Glide.with(binding.ivPhoto)
+                .load(contact.imageUri)
+                .error(R.drawable.person_black_24dp)
+                .into(binding.ivPhoto)
         }
 
         override fun onClick(p0: View?) {
