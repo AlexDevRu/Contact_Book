@@ -4,54 +4,70 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
-    tools:context=".MainActivity">
+    android:padding="16dp">
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/arrow_back_black_24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvContactData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="16dp"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/btnBack"
+        tools:text="@string/contact_data_1" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tlName"
+        android:id="@+id/tlPhone"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/name"
-        app:layout_constraintTop_toTopOf="parent">
+        android:hint="@string/phone"
+        app:layout_constraintTop_toBottomOf="@id/tvContactData">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etName"
+            android:id="@+id/etPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName" />
+            android:inputType="phone" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tlSurname"
+        android:id="@+id/tlEmail"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/surname"
-        app:layout_constraintTop_toBottomOf="@id/tlName">
+        android:hint="@string/email"
+        app:layout_constraintTop_toBottomOf="@id/tlPhone">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etSurname"
+            android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName" />
+            android:inputType="textEmailAddress" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tlPatronymic"
+        android:id="@+id/tlAddress"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/patronymic"
-        app:layout_constraintTop_toBottomOf="@id/tlSurname">
+        android:hint="@string/address"
+        app:layout_constraintTop_toBottomOf="@id/tlEmail">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etPatronymic"
+            android:id="@+id/etAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName" />
+            android:inputType="text" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

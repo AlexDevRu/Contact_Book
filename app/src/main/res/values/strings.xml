@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Learning_Android_Contact_Book_Kulakov</string>
+    <string name="name">Имя</string>
+    <string name="surname">Фамилия</string>
+    <string name="patronymic">Отчество</string>
+    <string name="next">Далее</string>
+
+    <string name="contact_data_1">Имя: %s\nФамилия: %s\nОтчество: %s</string>
+    <string name="phone">Номер телефона</string>
+    <string name="email">Email</string>
+    <string name="address">Адрес</string>
+
+    <string name="open_camera">Открыть камеру</string>
+    <string name="open_gallery">Открыть галерею</string>
+    <string name="contact_data_2">Номер телефона: %s\nEmail: %s\nАдрес: %s</string>
+
+    <string name="register">Зарегистрировать</string>
 </resources>
