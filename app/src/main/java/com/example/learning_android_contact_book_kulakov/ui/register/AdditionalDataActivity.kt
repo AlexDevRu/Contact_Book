@@ -1,10 +1,12 @@
-package com.example.learning_android_contact_book_kulakov
+package com.example.learning_android_contact_book_kulakov.ui.register
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.example.learning_android_contact_book_kulakov.R
+import com.example.learning_android_contact_book_kulakov.SharedPrefs
 import com.example.learning_android_contact_book_kulakov.databinding.ActivityAdditionalDataBinding
 
 class AdditionalDataActivity : AppCompatActivity(), View.OnClickListener {
@@ -23,7 +25,7 @@ class AdditionalDataActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.etPhone.setText(SharedPrefs.phone)
         binding.etEmail.setText(SharedPrefs.email)
-        binding.etAddress.setText(SharedPrefs.address)
+        binding.etLink.setText(SharedPrefs.link)
 
         binding.btnNext.setOnClickListener(this)
         binding.btnBack.setOnClickListener(this)
@@ -33,10 +35,10 @@ class AdditionalDataActivity : AppCompatActivity(), View.OnClickListener {
         super.onStop()
         val phone = binding.etPhone.text?.toString().orEmpty()
         val email = binding.etEmail.text?.toString().orEmpty()
-        val address = binding.etAddress.text?.toString().orEmpty()
+        val link = binding.etLink.text?.toString().orEmpty()
         SharedPrefs.phone = phone
         SharedPrefs.email = email
-        SharedPrefs.address = address
+        SharedPrefs.link = link
     }
 
     override fun onClick(view: View?) {
@@ -52,8 +54,8 @@ class AdditionalDataActivity : AppCompatActivity(), View.OnClickListener {
         val patronymic = SharedPrefs.patronymic.orEmpty()
         val phone = binding.etPhone.text?.toString().orEmpty()
         val email = binding.etEmail.text?.toString().orEmpty()
-        val address = binding.etAddress.text?.toString().orEmpty()
-        ContactPhotoActivity.startActivity(this, name, surname, patronymic, phone, email, address)
+        val link = binding.etLink.text?.toString().orEmpty()
+        ContactPhotoActivity.startActivity(this, name, surname, patronymic, phone, email, link)
     }
 
     companion object {

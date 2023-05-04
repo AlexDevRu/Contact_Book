@@ -8,11 +8,11 @@
     <string name="contact_data_1">Имя: %s\nФамилия: %s\nОтчество: %s</string>
     <string name="phone">Номер телефона</string>
     <string name="email">Email</string>
-    <string name="address">Адрес</string>
+    <string name="link">Ссылка на соц сети</string>
 
     <string name="open_camera">Открыть камеру</string>
     <string name="open_gallery">Открыть галерею</string>
-    <string name="contact_data_2">Номер телефона: %s\nEmail: %s\nАдрес: %s</string>
+    <string name="contact_data_2">Номер телефона: %s\nEmail: %s\nСсылка на соц. сети: %s</string>
 
     <string name="register">Зарегистрировать</string>
 </resources>

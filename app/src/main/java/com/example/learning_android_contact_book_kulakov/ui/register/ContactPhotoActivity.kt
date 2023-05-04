@@ -1,4 +1,4 @@
-package com.example.learning_android_contact_book_kulakov
+package com.example.learning_android_contact_book_kulakov.ui.register
 
 import android.content.Context
 import android.content.Intent
@@ -10,6 +10,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
 import com.bumptech.glide.Glide
+import com.example.learning_android_contact_book_kulakov.R
+import com.example.learning_android_contact_book_kulakov.SharedPrefs
 import com.example.learning_android_contact_book_kulakov.databinding.ActivityContactPhotoBinding
 import java.io.File
 import java.text.SimpleDateFormat
@@ -45,7 +47,7 @@ class ContactPhotoActivity : AppCompatActivity(), View.OnClickListener {
     private var patronymic = ""
     private var phone = ""
     private var email = ""
-    private var address = ""
+    private var link = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,10 +59,10 @@ class ContactPhotoActivity : AppCompatActivity(), View.OnClickListener {
         patronymic = intent.getStringExtra(AdditionalDataActivity.PATRONYMIC) ?: SharedPrefs.patronymic.orEmpty()
         phone = intent.getStringExtra(PHONE) ?: SharedPrefs.phone.orEmpty()
         email = intent.getStringExtra(EMAIL) ?: SharedPrefs.email.orEmpty()
-        address = intent.getStringExtra(ADDRESS) ?: SharedPrefs.address.orEmpty()
+        link = intent.getStringExtra(LINK) ?: SharedPrefs.link.orEmpty()
 
         binding.tvContactData1.text = getString(R.string.contact_data_1, name, surname, patronymic)
-        binding.tvContactData2.text = getString(R.string.contact_data_2, phone, email, address)
+        binding.tvContactData2.text = getString(R.string.contact_data_2, phone, email, link)
 
         SharedPrefs.uri?.let {
             Glide.with(binding.ivPhoto)
@@ -101,13 +103,13 @@ class ContactPhotoActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun goNext() {
         val uri = SharedPrefs.uri.orEmpty()
-        SummaryActivity.startActivity(this, name, surname, patronymic, phone, email, address, uri)
+        SummaryActivity.startActivity(this, name, surname, patronymic, phone, email, link, uri)
     }
 
     companion object {
         const val PHONE = "PHONE"
         const val EMAIL = "EMAIL"
-        const val ADDRESS = "ADDRESS"
+        const val LINK = "LINK"
 
         fun startActivity(
             context: Context,
@@ -116,7 +118,7 @@ class ContactPhotoActivity : AppCompatActivity(), View.OnClickListener {
             patronymic: String,
             phone: String,
             email: String,
-            address: String
+            link: String
         ) {
             val intent = Intent(context, ContactPhotoActivity::class.java)
                 .putExtra(AdditionalDataActivity.NAME, name)
@@ -124,7 +126,7 @@ class ContactPhotoActivity : AppCompatActivity(), View.OnClickListener {
                 .putExtra(AdditionalDataActivity.PATRONYMIC, patronymic)
                 .putExtra(PHONE, phone)
                 .putExtra(EMAIL, email)
-                .putExtra(ADDRESS, address)
+                .putExtra(LINK, link)
             context.startActivity(intent)
         }
     }

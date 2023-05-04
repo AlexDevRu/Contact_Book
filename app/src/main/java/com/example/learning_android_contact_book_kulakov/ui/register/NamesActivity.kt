@@ -1,17 +1,18 @@
-package com.example.learning_android_contact_book_kulakov
+package com.example.learning_android_contact_book_kulakov.ui.register
 
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.example.learning_android_contact_book_kulakov.databinding.ActivityMainBinding
+import com.example.learning_android_contact_book_kulakov.SharedPrefs
+import com.example.learning_android_contact_book_kulakov.databinding.ActivityNamesBinding
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class NamesActivity : AppCompatActivity(), View.OnClickListener {
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityNamesBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityNamesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.btnNext.setOnClickListener(this)

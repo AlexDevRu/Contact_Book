@@ -13,7 +13,7 @@
         android:theme="@style/Theme.Learning_Android_Contact_Book_Kulakov"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,9 +21,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AdditionalDataActivity" />
-        <activity android:name=".ContactPhotoActivity" />
-        <activity android:name=".SummaryActivity" />
+        <activity android:name=".ui.register.NamesActivity" />
+        <activity android:name=".ui.register.AdditionalDataActivity" />
+        <activity android:name=".ui.register.ContactPhotoActivity" />
+        <activity android:name=".ui.register.SummaryActivity" />
+        <activity android:name=".ui.contact_details.ContactDetailsActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

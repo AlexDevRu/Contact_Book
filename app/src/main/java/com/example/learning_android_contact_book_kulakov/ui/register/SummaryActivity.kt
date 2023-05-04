@@ -1,4 +1,4 @@
-package com.example.learning_android_contact_book_kulakov
+package com.example.learning_android_contact_book_kulakov.ui.register
 
 import android.content.Context
 import android.content.Intent
@@ -7,7 +7,11 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
+import com.example.learning_android_contact_book_kulakov.Contact
+import com.example.learning_android_contact_book_kulakov.R
+import com.example.learning_android_contact_book_kulakov.SharedPrefs
 import com.example.learning_android_contact_book_kulakov.databinding.ActivitySummaryBinding
+import com.example.learning_android_contact_book_kulakov.ui.MainActivity
 import com.google.gson.Gson
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -30,7 +34,7 @@ class SummaryActivity : AppCompatActivity(), View.OnClickListener {
         val patronymic = intent.getStringExtra(AdditionalDataActivity.PATRONYMIC) ?: SharedPrefs.patronymic
         val phone = intent.getStringExtra(ContactPhotoActivity.PHONE) ?: SharedPrefs.phone
         val email = intent.getStringExtra(ContactPhotoActivity.EMAIL) ?: SharedPrefs.email
-        val address = intent.getStringExtra(ContactPhotoActivity.ADDRESS) ?: SharedPrefs.address
+        val address = intent.getStringExtra(ContactPhotoActivity.LINK) ?: SharedPrefs.link
 
         binding.tvContactData1.text = getString(R.string.contact_data_1, name, surname, patronymic)
         binding.tvContactData2.text = getString(R.string.contact_data_2, phone, email, address)
@@ -54,14 +58,16 @@ class SummaryActivity : AppCompatActivity(), View.OnClickListener {
 
     private fun register() {
         lifecycleScope.launch(Dispatchers.IO) {
-            val file = File(filesDir, "${System.currentTimeMillis()}.json")
+            val created = System.currentTimeMillis()
+            val file = File(filesDir, "$created.json")
             val contact = Contact(
+                created = created,
                 name = SharedPrefs.name.orEmpty(),
                 surname = SharedPrefs.surname.orEmpty(),
                 patronymic = SharedPrefs.patronymic.orEmpty(),
                 phone = SharedPrefs.phone.orEmpty(),
                 email = SharedPrefs.email.orEmpty(),
-                address = SharedPrefs.address.orEmpty(),
+                link = SharedPrefs.link.orEmpty(),
                 imageUri = SharedPrefs.uri.orEmpty(),
             )
             val json = gson.toJson(contact)
@@ -86,7 +92,7 @@ class SummaryActivity : AppCompatActivity(), View.OnClickListener {
             patronymic: String,
             phone: String,
             email: String,
-            address: String,
+            link: String,
             uri: String,
         ) {
             val intent = Intent(context, SummaryActivity::class.java)
@@ -95,7 +101,7 @@ class SummaryActivity : AppCompatActivity(), View.OnClickListener {
                 .putExtra(AdditionalDataActivity.PATRONYMIC, patronymic)
                 .putExtra(ContactPhotoActivity.PHONE, phone)
                 .putExtra(ContactPhotoActivity.EMAIL, email)
-                .putExtra(ContactPhotoActivity.ADDRESS, address)
+                .putExtra(ContactPhotoActivity.LINK, link)
                 .putExtra(URI, uri)
             context.startActivity(intent)
         }

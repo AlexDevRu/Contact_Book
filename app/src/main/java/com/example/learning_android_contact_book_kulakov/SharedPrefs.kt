@@ -11,7 +11,7 @@ object SharedPrefs {
     private const val patronymicKey = "patronymic"
     private const val phoneNumberKey = "phoneNumber"
     private const val emailKey = "email"
-    private const val addressKey = "address"
+    private const val linkKey = "link"
     private const val uriKey = "uri"
 
     private lateinit var preferences: SharedPreferences
@@ -40,9 +40,9 @@ object SharedPrefs {
         get() = preferences.getString(emailKey, null)
         set(value) = preferences.edit { putString(emailKey, value) }
 
-    var address: String?
-        get() = preferences.getString(addressKey, null)
-        set(value) = preferences.edit { putString(addressKey, value) }
+    var link: String?
+        get() = preferences.getString(linkKey, null)
+        set(value) = preferences.edit { putString(linkKey, value) }
 
     var uri: String?
         get() = preferences.getString(uriKey, null)
