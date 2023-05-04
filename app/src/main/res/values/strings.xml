@@ -15,4 +15,10 @@
     <string name="contact_data_2">Номер телефона: %s\nEmail: %s\nСсылка на соц. сети: %s</string>
 
     <string name="register">Зарегистрировать</string>
+
+    <string name="select_photo">Выбрать фото</string>
+    <string-array name="select_photo">
+        <item>Камера</item>
+        <item>Галерея</item>
+    </string-array>
 </resources>
