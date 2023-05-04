@@ -42,9 +42,17 @@ class SummaryActivity : AppCompatActivity(), View.OnClickListener {
         }
 
         binding.btnRegister.setOnClickListener(this)
+        binding.btnBack.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
+        when (view) {
+            binding.btnBack -> finish()
+            binding.btnRegister -> register()
+        }
+    }
+
+    private fun register() {
         lifecycleScope.launch(Dispatchers.IO) {
             val file = File(filesDir, "${System.currentTimeMillis()}.json")
             val contact = Contact(
